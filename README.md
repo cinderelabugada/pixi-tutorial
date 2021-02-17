@@ -18,3 +18,15 @@ Primeiro tutorial: [01 - Getting started with PixiJS](https://github.com/kittyka
 
 Bundler: [Parcel](https://parceljs.org/)
 ES6: [Babel](https://babeljs.io/)
+
+
+### Executar
+
+```bash
+# instalar dependencias
+yarn install
+
+# rodar o server (express)
+# verifica localhost:3000
+node server.js
+```
