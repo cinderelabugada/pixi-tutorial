@@ -7,8 +7,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "parcel serve src/index.html --out-dir docs",
-    "build": "parcel build src/index.html --out-dir docs"
+    "start": "parcel serve src/index.html --public-url '.' --out-dir docs",
+    "build": "parcel build src/index.html --public-url '.' --out-dir docs"
   },
   "devDependencies": {
     "express": "^4.17.1"
