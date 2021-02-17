@@ -27,6 +27,6 @@ ES6: [Babel](https://babeljs.io/)
 yarn install
 
 # rodar o server (express)
-# verifica localhost:3000
-node server.js
+# verifica localhost:1234
+yarn start
 ```
