@@ -49036,6 +49036,8 @@ module.exports = "/megaman.cf91fe28.png";
 module.exports = "/luigi.b970e971.png";
 },{}],"images/sprites/coracao.png":[function(require,module,exports) {
 module.exports = "/coracao.883abeda.png";
+},{}],"images/limao.png":[function(require,module,exports) {
+module.exports = "/limao.eb8583ec.png";
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -49050,6 +49052,8 @@ var _megaman = _interopRequireDefault(require("./images/megaman.png"));
 var _luigi = _interopRequireDefault(require("./images/luigi.png"));
 
 var _coracao = _interopRequireDefault(require("./images/sprites/coracao.png"));
+
+var _limao = _interopRequireDefault(require("./images/limao.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49100,7 +49104,7 @@ document.body.appendChild(app.view);
  * Carrega os sprites e converte para o formato cache textura utilizado pelo WebGL
  */
 
-PIXI.Loader.shared.add([_arara.default, _megaman.default, _luigi.default, _coracao.default]).add('images/spritesheet.json').load(setup);
+PIXI.Loader.shared.add([_arara.default, _megaman.default, _luigi.default, _coracao.default, _limao.default]).add('images/spritesheet.json').load(setup);
 var sprite = {};
 
 function setup() {
@@ -49194,6 +49198,17 @@ function setup() {
    */
 
   app.stage.addChild(sprite.coracao);
+  /**
+   * Textura fica disponível através do índice igual ao nome do arquivo de
+   * imagem.
+   */
+
+  sprite.suco = new PIXI.Sprite(PIXI.Loader.shared.resources[_limao.default].texture);
+  sprite.suco.scale.set(0.1, 0.1);
+  sprite.suco.x = 100;
+  sprite.suco.vx = 2;
+  sprite.suco.vy = 2;
+  app.stage.addChild(sprite.suco);
   app.ticker.add(function (delta) {
     return gameLoop(delta);
   });
@@ -49206,8 +49221,10 @@ function gameLoop(delta) {
    */
   sprite.coracao.x = (sprite.coracao.x + sprite.coracao.vx + delta) % window.innerWidth;
   sprite.coracao.y = (sprite.coracao.y + sprite.coracao.vy + delta) % window.innerHeight;
+  sprite.suco.x = (sprite.suco.x + sprite.suco.vx + delta) % window.innerWidth;
+  sprite.suco.y = (sprite.suco.y + sprite.suco.vy + delta) % window.innerHeight;
 }
-},{"pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","./scaleToWindow":"scaleToWindow.js","./images/arara.png":"images/arara.png","./images/megaman.png":"images/megaman.png","./images/luigi.png":"images/luigi.png","./images/sprites/coracao.png":"images/sprites/coracao.png"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","./scaleToWindow":"scaleToWindow.js","./images/arara.png":"images/arara.png","./images/megaman.png":"images/megaman.png","./images/luigi.png":"images/luigi.png","./images/sprites/coracao.png":"images/sprites/coracao.png","./images/limao.png":"images/limao.png"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -49235,7 +49252,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45385" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34881" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

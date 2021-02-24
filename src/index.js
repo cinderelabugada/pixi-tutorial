@@ -5,6 +5,7 @@ import araraImg from './images/arara.png'
 import megamanImg from './images/megaman.png'
 import luigiImg from './images/luigi.png'
 import coracaoImg from './images/sprites/coracao.png'
+import sucoImg from './images/limao.png'
 
 
 /**
@@ -51,6 +52,7 @@ PIXI.Loader.shared
     megamanImg,
     luigiImg,
     coracaoImg,
+    sucoImg
   ])
   .add('images/spritesheet.json')
   .load(setup)
@@ -160,6 +162,19 @@ function setup () {
    */
   app.stage.addChild(sprite.coracao)
 
+  /**
+   * Textura fica disponível através do índice igual ao nome do arquivo de
+   * imagem.
+   */
+  sprite.suco = new PIXI.Sprite(PIXI.Loader.shared.resources[sucoImg].texture)
+
+  sprite.suco.scale.set(0.1, 0.1)
+  sprite.suco.x = 100
+  sprite.suco.vx = 2
+  sprite.suco.vy = 2
+
+  app.stage.addChild(sprite.suco)
+
   app.ticker.add(delta => gameLoop(delta))
 }
 
@@ -170,6 +185,7 @@ function gameLoop(delta) {
    */
   sprite.coracao.x = (sprite.coracao.x + sprite.coracao.vx + delta) % window.innerWidth
   sprite.coracao.y = (sprite.coracao.y + sprite.coracao.vy + delta) % window.innerHeight
+
+  sprite.suco.x = (sprite.suco.x + sprite.suco.vx + delta) % window.innerWidth
+  sprite.suco.y = (sprite.suco.y + sprite.suco.vy + delta) % window.innerHeight
 }
-
-
