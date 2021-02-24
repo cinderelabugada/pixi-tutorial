@@ -1,0 +1,25 @@
+{
+	"meta": {
+		"image": "spritesheet.png",
+		"size": {"w":582,"h":365},
+		"scale": "1"
+	},
+	"frames": {
+		"coracao.png":
+		{
+			"frame": {"x":0,"y":0,"w":360,"h":365},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":360,"h":365},
+			"sourceSize": {"w":360,"h":365}
+		},
+		"pickachu.png":
+		{
+			"frame": {"x":360,"y":0,"w":222,"h":227},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {"x":0,"y":0,"w":222,"h":227},
+			"sourceSize": {"w":222,"h":227}
+		}
+	}
+}

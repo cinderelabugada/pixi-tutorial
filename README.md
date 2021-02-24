@@ -19,7 +19,12 @@ Primeiro tutorial: [01 - Getting started with PixiJS](https://github.com/kittyka
 Bundler: [Parcel](https://parceljs.org/)
 ES6: [Babel](https://babeljs.io/)
 
+#### Criar arquivos Texture Atlas JSON:
 
+Spritesheet.js: [spritesheet.js](https://github.com/krzysztof-o/spritesheet.js/)
+
+Texture Packer: Não funciona muito bem em debian
+ 
 ### Executar
 
 ```bash

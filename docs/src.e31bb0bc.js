@@ -49034,6 +49034,8 @@ module.exports = "/arara.f6834182.png";
 module.exports = "/megaman.cf91fe28.png";
 },{}],"images/luigi.png":[function(require,module,exports) {
 module.exports = "/luigi.b970e971.png";
+},{}],"images/sprites/coracao.png":[function(require,module,exports) {
+module.exports = "/coracao.883abeda.png";
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -49046,6 +49048,8 @@ var _arara = _interopRequireDefault(require("./images/arara.png"));
 var _megaman = _interopRequireDefault(require("./images/megaman.png"));
 
 var _luigi = _interopRequireDefault(require("./images/luigi.png"));
+
+var _coracao = _interopRequireDefault(require("./images/sprites/coracao.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49096,7 +49100,7 @@ document.body.appendChild(app.view);
  * Carrega os sprites e converte para o formato cache textura utilizado pelo WebGL
  */
 
-PIXI.Loader.shared.add([_arara.default, _megaman.default, _luigi.default]).load(setup);
+PIXI.Loader.shared.add([_arara.default, _megaman.default, _luigi.default, _coracao.default]).add('images/spritesheet.json').load(setup);
 var sprite = {};
 
 function setup() {
@@ -49157,8 +49161,53 @@ function setup() {
    */
 
   app.stage.addChild(sprite.luigi);
+  /**
+   * Texture Atlas: antes de usar utilize o spritesheetjs sobre uma pasta de
+   * imagens png e utilize o .json e .png gerado
+   */
+
+  /*
+    const spritesheetTexture = PIXI.utils.TextureCache["pickachu.png"]
+    sprite.coracao = new PIXI.Sprite(
+      PIXI.Loader.shared.resources['images/spritesheet.json'].texture['coracao.png']
+    )
+  
+    sprite.coracao.x = 400
+    sprite.coracao.x = 200
+    sprite.coracao.y = 200
+  
+    app.stage.addChild(sprite.coracao)
+  */
+
+  /**
+    * Textura fica disponível através do índice igual ao nome do arquivo de
+    * imagem.
+    */
+
+  sprite.coracao = new PIXI.Sprite(PIXI.Loader.shared.resources[_coracao.default].texture);
+  sprite.coracao.vx = 2;
+  sprite.coracao.vy = 2;
+  sprite.coracao.scale.set(0.2, 0.2);
+  /**
+   * Para renderizar o sprite ele precisa ser adicionado no objeto stage.
+   * Stage é o objeto que contem tudo que é renderizado.
+   */
+
+  app.stage.addChild(sprite.coracao);
+  app.ticker.add(function (delta) {
+    return gameLoop(delta);
+  });
 }
-},{"pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","./scaleToWindow":"scaleToWindow.js","./images/arara.png":"images/arara.png","./images/megaman.png":"images/megaman.png","./images/luigi.png":"images/luigi.png"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+function gameLoop(delta) {
+  /**
+   * - delta da funcao ticker deixa a atualizacao independente da taxa de quadros
+   * - pode ser que diminua a utilização de cpu com o delta
+   */
+  sprite.coracao.x = (sprite.coracao.x + sprite.coracao.vx + delta) % window.innerWidth;
+  sprite.coracao.y = (sprite.coracao.y + sprite.coracao.vy + delta) % window.innerHeight;
+}
+},{"pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","./scaleToWindow":"scaleToWindow.js","./images/arara.png":"images/arara.png","./images/megaman.png":"images/megaman.png","./images/luigi.png":"images/luigi.png","./images/sprites/coracao.png":"images/sprites/coracao.png"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -49186,7 +49235,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46451" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45385" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
